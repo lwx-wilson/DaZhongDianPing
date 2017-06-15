@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "E:\\Android_studio_projects\\DaZhongDianPing\\listSamples\\build\\intermediates\\res\\merged\\debug\\color\\vpi__light_theme.xml",
+        "source": "E:\\Android_studio_projects\\DaZhongDianPing\\listSamples\\build\\intermediates\\exploded-aar\\DaZhongDianPing\\viewpagerIndicator_library\\unspecified\\res\\color\\vpi__light_theme.xml"
+    },
+    {
+        "merged": "E:\\Android_studio_projects\\DaZhongDianPing\\listSamples\\build\\intermediates\\res\\merged\\debug\\color\\vpi__dark_theme.xml",
+        "source": "E:\\Android_studio_projects\\DaZhongDianPing\\listSamples\\build\\intermediates\\exploded-aar\\DaZhongDianPing\\viewpagerIndicator_library\\unspecified\\res\\color\\vpi__dark_theme.xml"
+    }
+]

@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "E:\\Android_studio_projects\\DaZhongDianPing\\listSamples\\build\\intermediates\\res\\merged\\debug\\drawable\\perm_group_camera.xml",
+        "source": "E:\\Android_studio_projects\\DaZhongDianPing\\listSamples\\src\\main\\res\\drawable\\perm_group_camera.xml"
+    },
+    {
+        "merged": "E:\\Android_studio_projects\\DaZhongDianPing\\listSamples\\build\\intermediates\\res\\merged\\debug\\drawable\\perm_group_location.xml",
+        "source": "E:\\Android_studio_projects\\DaZhongDianPing\\listSamples\\src\\main\\res\\drawable\\perm_group_location.xml"
+    },
+    {
+        "merged": "E:\\Android_studio_projects\\DaZhongDianPing\\listSamples\\build\\intermediates\\res\\merged\\debug\\drawable\\perm_group_device_alarms.xml",
+        "source": "E:\\Android_studio_projects\\DaZhongDianPing\\listSamples\\src\\main\\res\\drawable\\perm_group_device_alarms.xml"
+    },
+    {
+        "merged": "E:\\Android_studio_projects\\DaZhongDianPing\\listSamples\\build\\intermediates\\res\\merged\\debug\\drawable\\perm_group_calendar.xml",
+        "source": "E:\\Android_studio_projects\\DaZhongDianPing\\listSamples\\src\\main\\res\\drawable\\perm_group_calendar.xml"
+    },
+    {
+        "merged": "E:\\Android_studio_projects\\DaZhongDianPing\\listSamples\\build\\intermediates\\res\\merged\\debug\\drawable\\vpi__tab_indicator.xml",
+        "source": "E:\\Android_studio_projects\\DaZhongDianPing\\listSamples\\build\\intermediates\\exploded-aar\\DaZhongDianPing\\viewpagerIndicator_library\\unspecified\\res\\drawable\\vpi__tab_indicator.xml"
+    },
+    {
+        "merged": "E:\\Android_studio_projects\\DaZhongDianPing\\listSamples\\build\\intermediates\\res\\merged\\debug\\drawable\\custom_tab_indicator.xml",
+        "source": "E:\\Android_studio_projects\\DaZhongDianPing\\listSamples\\src\\main\\res\\drawable\\custom_tab_indicator.xml"
+    }
+]

@@ -1,0 +1,50 @@
+[
+    {
+        "merged": "E:\\Android_studio_projects\\DaZhongDianPing\\listSamples\\build\\intermediates\\res\\merged\\debug\\layout\\themed_titles.xml",
+        "source": "E:\\Android_studio_projects\\DaZhongDianPing\\listSamples\\src\\main\\res\\layout\\themed_titles.xml"
+    },
+    {
+        "merged": "E:\\Android_studio_projects\\DaZhongDianPing\\listSamples\\build\\intermediates\\res\\merged\\debug\\layout\\themed_lines.xml",
+        "source": "E:\\Android_studio_projects\\DaZhongDianPing\\listSamples\\src\\main\\res\\layout\\themed_lines.xml"
+    },
+    {
+        "merged": "E:\\Android_studio_projects\\DaZhongDianPing\\listSamples\\build\\intermediates\\res\\merged\\debug\\layout\\simple_titles_bottom.xml",
+        "source": "E:\\Android_studio_projects\\DaZhongDianPing\\listSamples\\src\\main\\res\\layout\\simple_titles_bottom.xml"
+    },
+    {
+        "merged": "E:\\Android_studio_projects\\DaZhongDianPing\\listSamples\\build\\intermediates\\res\\merged\\debug\\layout\\simple_underlines.xml",
+        "source": "E:\\Android_studio_projects\\DaZhongDianPing\\listSamples\\src\\main\\res\\layout\\simple_underlines.xml"
+    },
+    {
+        "merged": "E:\\Android_studio_projects\\DaZhongDianPing\\listSamples\\build\\intermediates\\res\\merged\\debug\\layout\\themed_underlines.xml",
+        "source": "E:\\Android_studio_projects\\DaZhongDianPing\\listSamples\\src\\main\\res\\layout\\themed_underlines.xml"
+    },
+    {
+        "merged": "E:\\Android_studio_projects\\DaZhongDianPing\\listSamples\\build\\intermediates\\res\\merged\\debug\\layout\\simple_tabs.xml",
+        "source": "E:\\Android_studio_projects\\DaZhongDianPing\\listSamples\\src\\main\\res\\layout\\simple_tabs.xml"
+    },
+    {
+        "merged": "E:\\Android_studio_projects\\DaZhongDianPing\\listSamples\\build\\intermediates\\res\\merged\\debug\\layout\\simple_circles.xml",
+        "source": "E:\\Android_studio_projects\\DaZhongDianPing\\listSamples\\src\\main\\res\\layout\\simple_circles.xml"
+    },
+    {
+        "merged": "E:\\Android_studio_projects\\DaZhongDianPing\\listSamples\\build\\intermediates\\res\\merged\\debug\\layout\\simple_icons.xml",
+        "source": "E:\\Android_studio_projects\\DaZhongDianPing\\listSamples\\src\\main\\res\\layout\\simple_icons.xml"
+    },
+    {
+        "merged": "E:\\Android_studio_projects\\DaZhongDianPing\\listSamples\\build\\intermediates\\res\\merged\\debug\\layout\\simple_titles.xml",
+        "source": "E:\\Android_studio_projects\\DaZhongDianPing\\listSamples\\src\\main\\res\\layout\\simple_titles.xml"
+    },
+    {
+        "merged": "E:\\Android_studio_projects\\DaZhongDianPing\\listSamples\\build\\intermediates\\res\\merged\\debug\\layout\\simple_lines.xml",
+        "source": "E:\\Android_studio_projects\\DaZhongDianPing\\listSamples\\src\\main\\res\\layout\\simple_lines.xml"
+    },
+    {
+        "merged": "E:\\Android_studio_projects\\DaZhongDianPing\\listSamples\\build\\intermediates\\res\\merged\\debug\\layout\\simple_circles_vertical.xml",
+        "source": "E:\\Android_studio_projects\\DaZhongDianPing\\listSamples\\src\\main\\res\\layout\\simple_circles_vertical.xml"
+    },
+    {
+        "merged": "E:\\Android_studio_projects\\DaZhongDianPing\\listSamples\\build\\intermediates\\res\\merged\\debug\\layout\\themed_circles.xml",
+        "source": "E:\\Android_studio_projects\\DaZhongDianPing\\listSamples\\src\\main\\res\\layout\\themed_circles.xml"
+    }
+]
