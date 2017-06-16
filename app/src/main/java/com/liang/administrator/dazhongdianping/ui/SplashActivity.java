@@ -26,7 +26,7 @@ public class SplashActivity extends Activity {
                 //根据是否是第一次使用进行相应的界面跳转
                 Intent intent;
 
-                if(true){
+                if(spUtil.isFirst()){
                     //向新手指导页跳转
                     intent = new Intent(SplashActivity.this,GuideActivity.class);
                     spUtil.setFirst(false);
@@ -38,6 +38,6 @@ public class SplashActivity extends Activity {
                 startActivity(intent);
                 finish();
             }
-        },2000);
+        },1500);
     }
 }
