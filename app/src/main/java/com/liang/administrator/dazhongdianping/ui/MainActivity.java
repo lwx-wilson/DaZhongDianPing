@@ -46,8 +46,8 @@ public class MainActivity extends Activity {
     LinearLayout cityContainer;
     @BindView(R.id.search_shop)
     LinearLayout searchShop;
-    @BindView(R.id.title_imageView)
-    ImageView title_imageView;
+    @BindView(R.id.title_add)
+    LinearLayout title_add;
     @BindView(R.id.menu_layout)
     View meun_layout;
 
@@ -153,10 +153,10 @@ public class MainActivity extends Activity {
 
                 if (firstVisibleItem != 0){
                     cityContainer.setVisibility(View.GONE);
-                    title_imageView.setVisibility(View.GONE);
+                    title_add.setVisibility(View.GONE);
                 } else {
                     cityContainer.setVisibility(View.VISIBLE);
-                    title_imageView.setVisibility(View.VISIBLE);
+                    title_add.setVisibility(View.VISIBLE);
                 }
 
             }
