@@ -17,10 +17,15 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RadioButton;
+import android.widget.TextView;
 
+import com.google.gson.Gson;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.liang.administrator.dazhongdianping.R;
+import com.liang.administrator.dazhongdianping.adapter.DealAdapter;
+import com.liang.administrator.dazhongdianping.entity.BatchDeals;
+import com.liang.administrator.dazhongdianping.util.HttpUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +33,9 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity extends Activity {
 
@@ -51,10 +59,11 @@ public class MainActivity extends Activity {
     @BindView(R.id.menu_layout)
     View meun_layout;
 
-
     ListView listView;
-    List<String> datas;
-    ArrayAdapter<String> adapter;
+//    List<String> datas;
+//    ArrayAdapter<String> adapter;
+    List<BatchDeals.DealsBean> datas;
+    DealAdapter adapter;
     private ViewPager viewpager;
 
     @Override
@@ -105,8 +114,8 @@ public class MainActivity extends Activity {
     private void initialListView() {
 
         listView = pullToRefreshListView.getRefreshableView();
-        datas = new ArrayList<>();
-        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, datas);
+
+
 
         //为listView添加若干头部
         LayoutInflater inflater = LayoutInflater.from(this);
@@ -122,6 +131,11 @@ public class MainActivity extends Activity {
         listView.addHeaderView(listHeaderCategories);
         listView.addHeaderView(listHeaderRecommend);
 
+        /* datas = new ArrayList<>();
+        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, datas);*/
+
+        datas = new ArrayList<>();
+        adapter = new DealAdapter(this, datas);
         listView.setAdapter(adapter);
 
         initialListHeaderIcons(listHeaderIcons);
@@ -131,14 +145,16 @@ public class MainActivity extends Activity {
             @Override
             public void onRefresh(PullToRefreshBase<ListView> refreshView) {
 
-                new Handler().postDelayed(new Runnable() {
+                /*new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
                         datas.add(0, "新增内容");
                         adapter.notifyDataSetChanged();
                         pullToRefreshListView.onRefreshComplete();
                     }
-                }, 1500);
+                }, 1500);*/
+
+                refresh();
             }
         });
 
@@ -195,10 +211,6 @@ public class MainActivity extends Activity {
                 container.removeView((View) object);
             }
 
-            private void ViewPagerListener(int position) {
-
-
-            }
         };
 
         viewpager.setAdapter(adapter);
@@ -249,9 +261,30 @@ public class MainActivity extends Activity {
 
     private void refresh() {
 
-        for (int i = 1; i <= 20; i++){
-            datas.add("第" + i + "个数据");
-        }
+//        HttpUtil.testHttpURLConnection();
+//        HttpUtil.testVolley();
+//        HttpUtil.testRetrofit();
+
+        TextView title_city = (TextView) cityContainer.findViewById(R.id.main_title_city);
+        String cityName = title_city.getText().toString();
+        HttpUtil.retrofitGetDailyNewList(cityName, new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                String temp = response.body();
+//                Log.i("LWX=========", temp);
+                Gson gson = new Gson();
+                BatchDeals batchDeals = gson.fromJson(temp, BatchDeals.class);
+                List<BatchDeals.DealsBean> dealsList = batchDeals.getDeals();
+//                Log.i("LWX++++++++++", batchDeals.toString());
+                adapter.addAll(dealsList, true);
+                pullToRefreshListView.onRefreshComplete();
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable throwable) {
+
+            }
+        });
 
         adapter.notifyDataSetChanged();
     }

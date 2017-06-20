@@ -16,6 +16,7 @@
         android:layout_height="match_parent">
 
         <TextView
+            android:id="@+id/main_title_city"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:textColor="#ffffff"
@@ -61,6 +62,7 @@
         android:layout_height="match_parent"
         android:gravity="center">
     <ImageView
+        android:id="@+id/title_imageView"
         android:layout_width="35dp"
         android:layout_height="35dp"
         android:src="@drawable/home_navibar_icon_add"/>

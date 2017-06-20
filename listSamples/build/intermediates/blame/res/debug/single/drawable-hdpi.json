@@ -48,10 +48,6 @@
         "source": "E:\\Android_studio_projects\\DaZhongDianPing\\listSamples\\src\\main\\res\\drawable-hdpi\\custom_tab_indicator_unselected_focused.9.png"
     },
     {
-        "merged": "E:\\Android_studio_projects\\DaZhongDianPing\\listSamples\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\custom_tab_indicator_unselected_pressed.9.png",
-        "source": "E:\\Android_studio_projects\\DaZhongDianPing\\listSamples\\src\\main\\res\\drawable-hdpi\\custom_tab_indicator_unselected_pressed.9.png"
-    },
-    {
         "merged": "E:\\Android_studio_projects\\DaZhongDianPing\\listSamples\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\custom_tab_indicator_selected.9.png",
         "source": "E:\\Android_studio_projects\\DaZhongDianPing\\listSamples\\src\\main\\res\\drawable-hdpi\\custom_tab_indicator_selected.9.png"
     },
