@@ -1,10 +1,13 @@
 package com.liang.administrator.dazhongdianping.util;
 
 import android.util.Log;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.liang.administrator.dazhongdianping.app.MyApp;
 import com.liang.administrator.dazhongdianping.config.Constant;
 import com.liang.administrator.dazhongdianping.entity.BatchDeals;
+import com.liang.administrator.dazhongdianping.entity.City;
 import com.liang.administrator.dazhongdianping.entity.DailyId;
 
 import java.io.IOException;
@@ -22,6 +25,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 /**
@@ -52,7 +56,9 @@ public class RetrofitClient {
         okHttpClient = new OkHttpClient.Builder().addInterceptor(new MyOkHttpInterceptor()).build();
 
         //创建Retrofit对象,baseUrl中，如果是用converter-scalars-2.x版本，末尾要加/
-        retrofit = new Retrofit.Builder().client(okHttpClient).baseUrl(Constant.BASEURL).addConverterFactory(ScalarsConverterFactory.create()).build();
+        retrofit = new Retrofit.Builder().client(okHttpClient).baseUrl(Constant.BASEURL).
+                addConverterFactory(ScalarsConverterFactory.create()).
+                addConverterFactory(GsonConverterFactory.create()).build();
         netService = retrofit.create(NetService.class);
     }
 
@@ -126,7 +132,7 @@ public class RetrofitClient {
                 String temp=response.body();
                 Gson gson=new Gson();
                 DailyId daily=gson.fromJson(temp, DailyId.class);
-//                Log.i("lwx",daily.getCount()+"==================");
+                Log.i("LWX",daily.getCount()+"==================");
 //                Log.i("lwx", daily.getId_list().toString());
                 getListId(daily.getId_list(), callback);
             }
@@ -139,24 +145,30 @@ public class RetrofitClient {
     }
 
     private void getListId(List<String> listId, Callback<String> callback) {
-        int num = listId.size()/40;
-        for (int j = 0; j <= num; j++) {
-            StringBuilder builder = new StringBuilder();
-            if (j == num){
-                for (int i = j * 40; i < listId.size(); i++){
-                    builder.append(listId.get(i)).append(",");
+
+            int num = listId.size() / 40;
+            for (int j = 0; j <= num; j++) {
+                StringBuilder builder = new StringBuilder();
+                if (j == num) {
+                    for (int i = j * 40; i < listId.size(); i++) {
+                        builder.append(listId.get(i)).append(",");
+                    }
+                } else {
+                    for (int i = j * 40; i < (j + 1) * 40; i++) {
+                        builder.append(listId.get(i)).append(",");
+                    }
                 }
-            } else {
-                for (int i = j * 40; i < (j+1)*40; i++) {
-                    builder.append(listId.get(i)).append(",");
+
+                if (builder.length() > 0) {
+                    String id = builder.deleteCharAt(builder.length() - 1).toString();
+//                Log.i("LWX========", id);
+//            getBatchDealsById(id, callback);
+                    getBatchDealsById2(id, callback);
+
+                } else {
+                    Toast.makeText(MyApp.CONTEXT, "该城市太low，没钱吃外卖", Toast.LENGTH_SHORT).show();
                 }
             }
-            String id = builder.deleteCharAt(builder.length()-1).toString();
-//            Log.i("LWX========", id);
-//            getBatchDealsById(id, callback);
-            getBatchDealsById2(id, callback);
-        }
-
         /*for(int i = 0; i < listId.size(); i++){
             String id = listId.get(i);
             Log.i("LWX==========", id);
@@ -183,6 +195,12 @@ public class RetrofitClient {
         call.enqueue(callback);
     }
 
+    public void getCities(Callback<City> callback) {
+
+        Call<City> call = netService.getCities();
+        call.enqueue(callback);
+    }
+
     public class MyOkHttpInterceptor implements Interceptor{
 
         @Override
@@ -202,10 +220,17 @@ public class RetrofitClient {
             String sign = HttpUtil.getSign(HttpUtil.APPKEY, HttpUtil.APPSECRET, params);
             //字符串格式的地址
             String urlStr = url.toString();
-            Log.i("LWX:原始请求路径==========", urlStr);
+//            Log.i("LWX:原始请求路径==========", urlStr);
             StringBuilder sb = new StringBuilder(urlStr);
-            sb.append("&").append("appkey=").append(HttpUtil.APPKEY).append("&").append("sign=").append(sign);
-            Log.i("LWX:新的请求路径==========", sb.toString());
+
+            if (set.size() == 0){
+                sb.append("?");
+            } else {
+                sb.append("&");
+            }
+
+            sb.append("appkey=").append(HttpUtil.APPKEY).append("&").append("sign=").append(sign);
+//            Log.i("LWX:新的请求路径==========", sb.toString());
             Request newRequest = new Request.Builder().url(sb.toString()).build();
 
             return chain.proceed(newRequest);

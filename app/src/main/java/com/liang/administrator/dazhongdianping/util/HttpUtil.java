@@ -9,6 +9,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.liang.administrator.dazhongdianping.app.MyApp;
+import com.liang.administrator.dazhongdianping.entity.City;
 
 import org.apache.commons.codec.binary.Hex;
 import org.apache.commons.codec.digest.DigestUtils;
@@ -144,5 +145,9 @@ public class HttpUtil {
     public static void retrofitGetDailyNewList(String city, Callback<String> callback) {
 //        RetrofitClient.getInstance().getDailyNewList(city, callback);
         RetrofitClient.getInstance().getDailyNewList2(city, callback);
+    }
+
+    public static void getCities(Callback<City> callback){
+        RetrofitClient.getInstance().getCities(callback);
     }
 }

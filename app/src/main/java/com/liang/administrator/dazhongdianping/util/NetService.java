@@ -1,5 +1,7 @@
 package com.liang.administrator.dazhongdianping.util;
 
+import com.liang.administrator.dazhongdianping.entity.City;
+
 import java.util.Map;
 
 import retrofit2.Call;
@@ -26,4 +28,7 @@ public interface NetService {
 
     @GET("deal/get_batch_deals_by_id")
     public Call<String> getBatchDealsById2(@QueryMap Map<String,String> params);
+
+    @GET("metadata/get_cities_with_businesses")
+    public Call<City> getCities();
 }

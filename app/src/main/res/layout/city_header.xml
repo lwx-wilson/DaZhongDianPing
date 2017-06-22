@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="#E8E8E8"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/location_city"
+        android:orientation="horizontal"
+        android:background="#ffffff"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:textSize="20dp"
+            android:layout_marginStart="20dp"
+            android:gravity="center"
+            android:text="广州"/>
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="50dp"
+        android:textSize="20dp"
+        android:textColor="@color/color_text_normal"
+        android:gravity="center_vertical"
+        android:paddingLeft="20dp"
+        android:background="#ffffff"
+        android:text="GPS定位"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_below="@+id/location_city"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
+
+    <TextView
+        style="@style/city_header_textView_theme"
+        android:text="历史访问海外目的地"/>
+
+    <TextView
+        android:layout_width="107dp"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:textSize="22dp"
+        android:background="#ffffff"
+        android:text="澳门"/>
+
+    <TextView
+        style="@style/city_header_textView_theme"
+        android:text="周边热门目的地"/>
+        
+     <LinearLayout
+         android:layout_width="match_parent"
+         android:layout_height="40dp"
+         android:orientation="horizontal">
+
+         <TextView
+             style="@style/city_header_cityName_theme"
+             android:text="香港"/>
+         <TextView
+             style="@style/city_header_cityName_theme"
+             android:layout_marginStart="10dp"
+             android:layout_marginEnd="10dp"
+             android:text="深圳"/>
+         <TextView
+             style="@style/city_header_cityName_theme"
+             android:text="上海"/>
+
+     </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/city_header_cityName_theme"
+                android:text="天津"/>
+            <TextView
+                style="@style/city_header_cityName_theme"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:text="杭州"/>
+            <TextView
+                style="@style/city_header_cityName_theme"
+                android:text="云南"/>
+
+        </LinearLayout>
+
+        <TextView
+            style="@style/city_header_textView_theme"
+            android:text="其他海外热门目的地"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/city_header_cityName_theme"
+                android:text="保定"/>
+            <TextView
+                style="@style/city_header_cityName_theme"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:text="台湾"/>
+            <TextView
+                style="@style/city_header_cityName_theme"
+                android:text="日本"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/city_header_cityName_theme"
+                android:text="泰国"/>
+            <TextView
+                style="@style/city_header_cityName_theme"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:text="越南"/>
+            <TextView
+                style="@style/city_header_cityName_theme"
+                android:text="新加坡"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/city_header_cityName_theme"
+                android:text="马来西亚"/>
+            <TextView
+                style="@style/city_header_cityName_theme"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:text="巴厘岛"/>
+            <TextView
+                style="@style/city_header_cityName_theme"
+                android:text="澳大利亚"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/city_header_cityName_theme"
+                android:text="美国"/>
+            <TextView
+                style="@style/city_header_cityName_theme"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:text="巴黎"/>
+            <TextView
+                style="@style/city_header_cityName_theme"
+                android:text="伦敦"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

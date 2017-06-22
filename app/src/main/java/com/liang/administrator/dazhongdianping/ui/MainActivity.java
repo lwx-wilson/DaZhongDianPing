@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
@@ -29,6 +31,7 @@ import com.liang.administrator.dazhongdianping.util.HttpUtil;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -58,6 +61,8 @@ public class MainActivity extends Activity {
     LinearLayout title_add;
     @BindView(R.id.menu_layout)
     View meun_layout;
+    @BindView(R.id.main_title_city)
+    TextView textView_cityName;
 
     ListView listView;
 //    List<String> datas;
@@ -66,6 +71,7 @@ public class MainActivity extends Activity {
     DealAdapter adapter;
     private ViewPager viewpager;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,7 +79,20 @@ public class MainActivity extends Activity {
 
         ButterKnife.bind(this);
         initialListView();
+        initialCityContainer();
         initialRadioButton();
+    }
+
+    private void initialCityContainer() {
+
+        cityContainer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, CityActivity.class);
+                startActivityForResult(intent,101);
+            }
+        });
+
     }
 
     @OnClick(R.id.cityContainer)
@@ -256,6 +275,7 @@ public class MainActivity extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
+
         refresh();
     }
 
@@ -265,27 +285,46 @@ public class MainActivity extends Activity {
 //        HttpUtil.testVolley();
 //        HttpUtil.testRetrofit();
 
-        TextView title_city = (TextView) cityContainer.findViewById(R.id.main_title_city);
-        String cityName = title_city.getText().toString();
+        String cityName = textView_cityName.getText().toString();
         HttpUtil.retrofitGetDailyNewList(cityName, new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
-                String temp = response.body();
-//                Log.i("LWX=========", temp);
-                Gson gson = new Gson();
-                BatchDeals batchDeals = gson.fromJson(temp, BatchDeals.class);
-                List<BatchDeals.DealsBean> dealsList = batchDeals.getDeals();
+
+                if (response != null){
+                    String temp = response.body();
+//                    Log.i("LWX=========", temp);
+                    Gson gson = new Gson();
+                    BatchDeals batchDeals = gson.fromJson(temp, BatchDeals.class);
+                    List<BatchDeals.DealsBean> dealsList = batchDeals.getDeals();
 //                Log.i("LWX++++++++++", batchDeals.toString());
-                adapter.addAll(dealsList, true);
+
+                    adapter.addAll(dealsList, true);
+                    Log.i("LWX==========", "addAll:" + datas);
+                } else {
+                    Toast.makeText(MainActivity.this, "今日无新增团购！", Toast.LENGTH_SHORT).show();
+                }
                 pullToRefreshListView.onRefreshComplete();
             }
 
             @Override
             public void onFailure(Call<String> call, Throwable throwable) {
-
+                pullToRefreshListView.onRefreshComplete();
             }
         });
 
         adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (requestCode){
+            case 101:
+                if (resultCode==RESULT_OK){
+                    String cityName=data.getStringExtra("cityName");
+//                    Log.i("LWX======", cityName);
+                    textView_cityName.setText(cityName);
+                }
+                break;
+        }
     }
 }

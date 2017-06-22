@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/city_list_letter"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:background="#E8E8E8"
+        android:gravity="center_vertical"
+        android:textSize="20dp"
+        android:textColor="@color/color_text_normal"
+        android:paddingLeft="20dp"
+        android:text="A"/>
+
+    <TextView
+        android:id="@+id/city_list_cityname"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:textSize="20dp"
+        android:paddingLeft="20dp"
+        android:background="@drawable/stroke"
+        android:gravity="center_vertical"
+        android:text="城市名称"/>
+    
+</LinearLayout>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_search"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.liang.administrator.dazhongdianping.ui.SearchActivity">
+
+    <LinearLayout
+        android:id="@+id/city_searchWithPinYin"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:background="#E8E8E8"
+        android:gravity="center"
+        android:layout_height="50dp">
+
+        <ImageView
+            android:id="@+id/search_previous"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:src="@drawable/yy_calendar_icon_previous"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/title_search_item"
+            android:layout_height="35dp">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="20dp"
+                android:src="@drawable/home_search"/>
+
+            <EditText
+                android:id="@+id/search_editText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                android:hint="城市名、拼音首字母..."/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/search_listView"
+        android:layout_below="@+id/city_searchWithPinYin"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </ListView>
+
+</RelativeLayout>
