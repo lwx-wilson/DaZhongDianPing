@@ -1,5 +1,6 @@
 package com.liang.administrator.dazhongdianping.util;
 
+import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -7,8 +8,10 @@ import com.google.gson.Gson;
 import com.liang.administrator.dazhongdianping.app.MyApp;
 import com.liang.administrator.dazhongdianping.config.Constant;
 import com.liang.administrator.dazhongdianping.entity.BatchDeals;
+import com.liang.administrator.dazhongdianping.entity.Business;
 import com.liang.administrator.dazhongdianping.entity.City;
 import com.liang.administrator.dazhongdianping.entity.DailyId;
+import com.liang.administrator.dazhongdianping.entity.DistrictBean;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -198,6 +201,25 @@ public class RetrofitClient {
     public void getCities(Callback<City> callback) {
 
         Call<City> call = netService.getCities();
+        call.enqueue(callback);
+    }
+
+    public void getFoods(String city, String region, Callback<Business> callback){
+
+        Map<String, String> params = new HashMap<>();
+        params.put("city", city);
+        params.put("category", "美食");
+        if (TextUtils.isEmpty("region")){
+            params.put("region", region);
+        }
+        Call<Business> call = netService.getFoods(params);
+        call.enqueue(callback);
+    }
+
+    public void getRegions(String city, Callback<DistrictBean> callback) {
+        Map<String, String> params = new HashMap<>();
+        params.put("city", city);
+        Call<DistrictBean> call = netService.getRegions(params);
         call.enqueue(callback);
     }
 

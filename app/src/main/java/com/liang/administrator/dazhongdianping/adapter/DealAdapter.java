@@ -1,13 +1,18 @@
 package com.liang.administrator.dazhongdianping.adapter;
 
 import android.content.Context;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.baidu.mapapi.model.LatLng;
+import com.baidu.mapapi.utils.DistanceUtil;
 import com.liang.administrator.dazhongdianping.R;
+import com.liang.administrator.dazhongdianping.app.MyApp;
 import com.liang.administrator.dazhongdianping.entity.BatchDeals;
 import com.squareup.picasso.Picasso;
 
@@ -52,6 +57,15 @@ public class DealAdapter extends MyBaseAdapter<BatchDeals.DealsBean> {
         Random random = new Random();
         int count = random.nextInt(2000)+500;
         viewHolder.textView_count.setText("已售" + count);
+
+        if (MyApp.myLocation != null){
+            double distance = DistanceUtil.getDistance(new LatLng(deal.getBusinesses().get(0).getLatitude(), deal.getBusinesses().get(0).getLongitude()), MyApp.myLocation);
+            int result = (int) distance;
+//            viewHolder.textView_distance.setText(result);
+//            Log.i("LWX========", "MainActivity.distance:" + result);
+        } else {
+//            viewHolder.textView_distance.setText("");
+        }
 
         return view;
     }

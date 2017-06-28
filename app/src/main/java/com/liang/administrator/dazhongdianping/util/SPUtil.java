@@ -47,4 +47,13 @@ public class SPUtil {
         editor.commit();
     }
 
+    public boolean isCloseBanner(){
+        return sp.getBoolean(Constant.ISCLOSE, false);
+    }
+
+    public void setCloseBanner(boolean flag){
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putBoolean(Constant.ISCLOSE, flag);
+    }
+
 }

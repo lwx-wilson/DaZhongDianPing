@@ -4,4 +4,6 @@
         android:width="1dp"
         android:color="#50333333"
         />
+    <solid
+        android:color="#ffffff"></solid>
 </shape>

@@ -1,7 +1,10 @@
 package com.liang.administrator.dazhongdianping.util;
 
+import com.liang.administrator.dazhongdianping.entity.Business;
 import com.liang.administrator.dazhongdianping.entity.City;
+import com.liang.administrator.dazhongdianping.entity.DistrictBean;
 
+import java.util.Calendar;
 import java.util.Map;
 
 import retrofit2.Call;
@@ -31,4 +34,10 @@ public interface NetService {
 
     @GET("metadata/get_cities_with_businesses")
     public Call<City> getCities();
+
+    @GET("business/find_businesses")
+    public Call<Business> getFoods(@QueryMap Map<String, String> params);
+
+    @GET("metadata/get_regions_with_businesses")
+    public Call<DistrictBean> getRegions(@QueryMap Map<String, String> params);
 }

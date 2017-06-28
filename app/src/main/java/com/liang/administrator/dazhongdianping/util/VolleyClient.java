@@ -12,6 +12,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.liang.administrator.dazhongdianping.R;
 import com.liang.administrator.dazhongdianping.app.MyApp;
 
 import java.util.HashMap;
@@ -86,6 +87,11 @@ public class VolleyClient {
             }
         });
         queue.add(request);
+    }
+
+    public void loadImage(String url, ImageView imageView){
+        ImageLoader.ImageListener listener = ImageLoader.getImageListener(imageView, R.drawable.bucket_no_picture, R.mipmap.ic_launcher);
+        imageLoader.get(url, listener);
     }
 
 }

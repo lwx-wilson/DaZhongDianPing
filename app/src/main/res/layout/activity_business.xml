@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_business"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.liang.administrator.dazhongdianping.ui.BusinessActivity">
+
+    <LinearLayout
+        android:id="@+id/city_title"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:gravity="center_vertical"
+        android:background="#ffffff"
+        android:layout_height="50dp">
+
+        <ImageView
+            android:id="@+id/city_imageView_previous"
+            android:layout_width="20dp"
+            android:layout_marginStart="15dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/yy_calendar_icon_previous"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_height="wrap_content">
+
+            <RadioGroup
+                android:orientation="horizontal"
+                android:layout_width="160dp"
+                android:layout_gravity=""
+                android:layout_height="35dp">
+
+                <RadioButton
+                    android:id="@+id/city_radiobutton_all"
+                    style="@style/CityTitleRadioButtonTheme"
+                    android:checked="true"
+                    android:background="@drawable/city_title_radiobutton_all"
+                    android:text="商户"/>
+
+                <RadioButton
+                    android:id="@+id/city_radiobutton_overseas"
+                    style="@style/CityTitleRadioButtonTheme"
+                    android:background="@drawable/city_title_radiobutton_overseas"
+                    android:text="闪惠团购"/>
+
+            </RadioGroup>
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="15dp"
+            android:src="@drawable/navibar_icon_search"/>
+
+    </LinearLayout>
+    
+    <LinearLayout
+        android:orientation="horizontal"
+        android:background="@drawable/stroke"
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+
+        <LinearLayout
+            android:id="@+id/business_nearby"
+            android:layout_centerInParent="true"
+            android:orientation="horizontal"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/business_textView_nearby"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:text="附近"/>
+
+            <ImageView
+                android:id="@+id/business_imageView_nearby_down"
+                android:layout_width="15dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_arrow_down_black"/>
+
+            </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:text="美食"/>
+
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_arrow_down_black"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:text="智能排序"/>
+
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_arrow_down_black"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:text="筛选"/>
+
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_arrow_down_black"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <FrameLayout
+        android:id="@+id/business_frameLayout"
+        android:layout_width="match_parent"
+        android:layout_above="@+id/business_linearLayout_address"
+        android:layout_height="match_parent">
+
+        <ListView
+            android:id="@+id/business_listView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </ListView>
+
+        <ImageView
+            android:id="@+id/business_imageView_loading"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            android:src="@drawable/refreshing_anim"/>
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/business_linearLayout_address"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:background="@drawable/stroke"
+        android:gravity="center_vertical"
+        android:layout_height="35dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/green_button" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:textSize="18sp"
+            android:textColor="@color/color_text_normal"
+            android:text="广州地址"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/location_icon"
+            android:layout_marginEnd="10dp"/>
+
+    </LinearLayout>
+
+        <include
+            layout="@layout/business_nearby"
+            android:visibility="gone"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

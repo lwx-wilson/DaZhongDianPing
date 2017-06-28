@@ -92,8 +92,8 @@ public class SearchActivity extends Activity {
     @OnItemClick(R.id.search_listView)
     public void onItemSelect(AdapterView<?> adapterView, View view, int i, long l) {
         Intent data = new Intent();
-        String city = adapter.getItem(i);
-        data.putExtra("city", city);
+        String cityName = adapter.getItem(i);
+        data.putExtra("cityName", cityName);
         setResult(RESULT_OK, data);
         finish();
     }

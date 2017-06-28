@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">DaZhongDianPing</string>
+    <string name="business_list_food_item_tv01">天河大保健总店</string>
+    <string name="business_list_food_item_tv02">盲人按摩</string>
+    <string name="business_list_food_item_tv03"><![CDATA[<100m]]></string>
 </resources>

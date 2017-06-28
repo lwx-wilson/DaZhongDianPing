@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
+import android.widget.Switch;
 
 import com.liang.administrator.dazhongdianping.R;
 import com.liang.administrator.dazhongdianping.adapter.CityAdapter;
@@ -22,6 +23,7 @@ import com.liang.administrator.dazhongdianping.entity.CityName;
 import com.liang.administrator.dazhongdianping.util.DBUtil;
 import com.liang.administrator.dazhongdianping.util.HttpUtil;
 import com.liang.administrator.dazhongdianping.util.PinYinUtil;
+import com.liang.administrator.dazhongdianping.view.MyLetterView;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -47,6 +49,8 @@ public class CityActivity extends FragmentActivity {
     LinearLayout linearLayout_searchWithPinYin;
     @BindView(R.id.city_recyclerView)
     RecyclerView recyclerView;
+    @BindView(R.id.city_myLetterView)
+    MyLetterView myLetterView;
 
     CityAdapter adapter;
     List<CityName> datas;
@@ -66,6 +70,20 @@ public class CityActivity extends FragmentActivity {
                 Intent intent = new Intent(CityActivity.this, MainActivity.class);
                 startActivity(intent);
                 finish();
+            }
+        });
+
+        myLetterView.setOnTouchLetterListener(new MyLetterView.OnTouchLetterListener() {
+            @Override
+            public void onTouchLetter(String letter) {
+                Log.i("LWX===========", letter);
+                LinearLayoutManager manager = (LinearLayoutManager) recyclerView.getLayoutManager();
+                if (letter.equals("热门")){
+                    manager.scrollToPosition(0);
+                } else {
+                    int position = adapter.getPositionForSection(letter.charAt(0));
+                    manager.scrollToPositionWithOffset(position+1, 0);
+                }
             }
         });
     }
@@ -168,6 +186,18 @@ public class CityActivity extends FragmentActivity {
     @OnClick(R.id.city_searchCity)
     public void searchCity(){
         Intent intent = new Intent(CityActivity.this, SearchActivity.class);
-        startActivity(intent);
+        startActivityForResult(intent, 102);
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch(requestCode) {
+            case 102:
+                if (resultCode == RESULT_OK){
+                    setResult(RESULT_OK, data);
+                    finish();
+                }
+        }
+    }
+
 }

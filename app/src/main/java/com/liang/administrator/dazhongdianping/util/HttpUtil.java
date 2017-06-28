@@ -1,7 +1,10 @@
 package com.liang.administrator.dazhongdianping.util;
 
 import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
+import android.widget.ImageView;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -9,12 +12,17 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.liang.administrator.dazhongdianping.app.MyApp;
+import com.liang.administrator.dazhongdianping.entity.Business;
 import com.liang.administrator.dazhongdianping.entity.City;
+import com.liang.administrator.dazhongdianping.entity.DistrictBean;
 
 import org.apache.commons.codec.binary.Hex;
 import org.apache.commons.codec.digest.DigestUtils;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
@@ -31,6 +39,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Retrofit;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
+
+import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
 
 /**
  * Created by Administrator on 2017/6/19 0019.
@@ -142,6 +152,10 @@ public class HttpUtil {
         RetrofitClient.getInstance().test();
     }
 
+    public static void loadImage(String url, ImageView imageView) {
+        VolleyClient.getINSTANCE().loadImage(url, imageView);
+    }
+
     public static void retrofitGetDailyNewList(String city, Callback<String> callback) {
 //        RetrofitClient.getInstance().getDailyNewList(city, callback);
         RetrofitClient.getInstance().getDailyNewList2(city, callback);
@@ -149,5 +163,39 @@ public class HttpUtil {
 
     public static void getCities(Callback<City> callback){
         RetrofitClient.getInstance().getCities(callback);
+    }
+
+    public static void getFoods(String city, String region, Callback<Business> callback) {
+        RetrofitClient.getInstance().getFoods(city, region, callback);
+    }
+
+    public static void getRegions(String city, Callback<DistrictBean> callback){
+        RetrofitClient.getInstance().getRegions(city, callback);
+    }
+
+    public static void getComment(final String url, final OnresponseListener<Document> listener) {
+        new Thread(){
+            @Override
+            public void run() {
+                super.run();
+                try {
+                    final Document document = Jsoup.connect(url).get();
+
+                    new Handler(Looper.getMainLooper()).post(new Runnable() {
+                        @Override
+                        public void run() {
+                            listener.onResponse(document);
+                        }
+                    });
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }.start();
+    }
+
+    public interface OnresponseListener<T>{
+        void onResponse(T t);
     }
 }

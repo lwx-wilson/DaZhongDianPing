@@ -80,7 +80,7 @@ public class MainActivity extends Activity {
         ButterKnife.bind(this);
         initialListView();
         initialCityContainer();
-        initialRadioButton();
+//        initialRadioButton();
     }
 
     private void initialCityContainer() {
@@ -108,6 +108,13 @@ public class MainActivity extends Activity {
         } else {
             meun_layout.setVisibility(View.INVISIBLE);
         }
+    }
+
+    @OnClick(R.id.radioButton_search)
+    public void jump(){
+        Intent intent = new Intent(this, FindActivity.class);
+        intent.putExtra("from", "Main");
+        startActivity(intent);
     }
 
     private void initialRadioButton() {
@@ -198,7 +205,7 @@ public class MainActivity extends Activity {
         });
     }
 
-    private void initialListHeaderIcons(View listHeaderIcons) {
+    private void initialListHeaderIcons(final View listHeaderIcons) {
 
         viewpager = (ViewPager) listHeaderIcons.findViewById(R.id.vp_header_list_icons);
 
@@ -222,6 +229,19 @@ public class MainActivity extends Activity {
                 int layoutId = icons[position%3];
                 View view = LayoutInflater.from(MainActivity.this).inflate(layoutId, viewpager, false);
                 container.addView(view);
+
+                if (position%3 == 0){
+                    LinearLayout lineaLayout_food = (LinearLayout)view.findViewById(R.id.ll_icons_list_food);
+                    lineaLayout_food.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intent = new Intent(MainActivity.this, BusinessActivity.class);
+                            intent.putExtra("city", textView_cityName.getText().toString());
+                            startActivity(intent);
+                        }
+                    });
+                }
+
                 return view;
             }
 
@@ -229,7 +249,6 @@ public class MainActivity extends Activity {
             public void destroyItem(ViewGroup container, int position, Object object) {
                 container.removeView((View) object);
             }
-
         };
 
         viewpager.setAdapter(adapter);
@@ -299,8 +318,9 @@ public class MainActivity extends Activity {
 //                Log.i("LWX++++++++++", batchDeals.toString());
 
                     adapter.addAll(dealsList, true);
-                    Log.i("LWX==========", "addAll:" + datas);
+//                    Log.i("LWX==========", "addAll:" + datas);
                 } else {
+                    adapter.removeAll();
                     Toast.makeText(MainActivity.this, "今日无新增团购！", Toast.LENGTH_SHORT).show();
                 }
                 pullToRefreshListView.onRefreshComplete();
